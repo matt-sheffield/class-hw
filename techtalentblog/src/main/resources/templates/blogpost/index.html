@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Edit a Blog</title>
+		<th:block th:replace="/fragments/bootstrap::head"></th:block>
+	</head>
+	<body>
+		<div th:replace="/fragments/navbar"></div>
+		<div class="container">
+			<p th:text="${example_text}"></p>
+			<h1>Welcome to Our Blog Post Site!</h1>
+			<h2>Check out our blogs!</h2>
+			
+			<div class="row">
+				<div th:each="blog:${posts}" class="col-md-6 m-auto">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title" th:text="${blog.title}"></h5>
+									<div class="card-text">
+										<p th:text="${blog.author}"></p>
+										<p th:text="${blog.blogEntry}"></p>
+									</div>
+									<a th:href="@{/blogposts/{id} (id=${blog.id})}">
+										<button class="btn btn-primary">Edit Post</button>
+									</a>
+									<a th:href="@{/blogposts/delete/{id} (id=${blog.id})}">
+										<button class="btn btn-danger">Delete Blog Post</button>
+									</a>
+								</div>
+							</div>
+						</div>
+			</div>
+			<div class="row">
+				<a href="/blogposts/new" class="btn btn-primary mx-auto mt-5" style="width:200px;">Create a New Post</a>
+				<a href="/" class="btn btn-secondary mx-auto mt-5" style="width:200px;">Back to Home Page</a>
+			</div>
+		</div>
+		<th:block th:replace="/fragments/bootstrap::end"></th:block>
+	</body>
+</html>
