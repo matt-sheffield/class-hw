@@ -31,9 +31,16 @@ public class AddressBook {
 		System.out.print("Please enter email address: ");
 		emailAddress = scanner.next();
 		
-		Contact newcontact = new Contact(firstName, lastName, phoneNumber, emailAddress);
-	    this.contacts.add(newcontact);
-	    System.out.println("Entry added successfully.\n");
+		int emailIndex = getEmailIndex(emailAddress);
+		
+		if (emailIndex == -1) {
+			Contact newcontact = new Contact(firstName, lastName, phoneNumber, emailAddress);
+		    this.contacts.add(newcontact);
+		    System.out.println("Entry added successfully.\n");
+		} else {
+			System.out.println("Contact already exists.\n");
+		}	
+		
 	}
 	
 	
